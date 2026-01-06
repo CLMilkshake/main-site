@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CLMilkshake</title>
+  <link rel="stylesheet" href="style.css?v=2">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+  <header>
+  <div class="nav-left">
+    <a href="#">Showcase</a>
+    <a href="#">Projects</a>
+  </div>
+
+  <div class="logo">
+    <a href="/"><h2>CLMilkshake</h2></a>
+  </div>
+
+  <div class="nav-right">
+    <a href="#">idk</a>
+    <a href="#">idk</a>
+  </div>
+</header>
+
+<h2 style="padding-top: 5%;">This site is a work in progress</h2>
+
+  <div class="cards">
+    <a href="https://media.clmilkshake.cc"><div class="card"><h2>Milkshake Media</h2></div></a>
+    <a><div class="card">Card content</div></a>
+    <a><div class="card">Card content</div></a>
+  </div>
+        
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".card");
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          obs.unobserve(entry.target); // animate once
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px"
+    }
+  );
+
+  cards.forEach(card => observer.observe(card));
+});
+</script>
