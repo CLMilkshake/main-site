@@ -15,7 +15,7 @@ body {
   margin: 0;
   min-height: 100vh;
   width: 100%;
-  background: #202020; /* dark slate */
+  background-image: linear-gradient(to bottom, rgb(0, 104, 122), rgb(0, 10, 36));
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center; 
@@ -28,7 +28,7 @@ body {
 
 .cards a {
   text-decoration: none;
-  color: #007281;
+  color: #093d44;
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -38,43 +38,69 @@ body {
 }
 
 header {
-  position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  gap: 10px;
   width: 100%;
-  margin: 0 auto;
-  padding: 3rem 5rem;
-  background-color: #0c0c0c80;
+  padding: 20px;
   font-size: 120%;
 }
 
+.logo {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.nav-left {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding-top: 20px;
+}
 header a {
-  color: #4d3602;
+  color: #022d33;
 }
 
 header h2 {
-  color: #cea135;
+  color: #02f7ff;
   
 }
 a {
   text-decoration: none;
 }
 
-.logo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%); /* perfect center */
-  text-align: center;
-  flex-shrink: 0;
+
+.nav-right {
+  padding-top: 2%;
 }
 
-.nav-left, .nav-right {
+
+.stream-layout {
   display: flex;
-  gap: 1.5rem;
+  width: 90%;
+  height: 80vh;
 }
 
+.video {
+  flex: 3;
+}
 
+.video iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.chat {
+  flex: 1;
+  min-width: 320px;
+}
+
+.chat iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 
 
 .cards {
@@ -88,11 +114,11 @@ a {
 }
 
 .card {
-  background-color: #7944ab7e;
-  padding: 5%;
-  width: 100%;
+  background-color: #03586d;
+  padding: 8%;
+  width: 150%;
   border-radius: 20px;
-  margin-top: 5%;
+  margin-top: 10%;
   text-align: center;
 
   opacity: 0;
