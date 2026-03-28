@@ -52,27 +52,48 @@
 <h3 style="padding: 5%; text-align:center;"></h3>
 
 <script>
-    const endpoint = "https://api.clmilkshake.cc/lc"; 
+const endpoint = "https://api.clmilkshake.cc/lc"; // Your FastAPI endpoint
 
-    fetch(endpoint)
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById("scoreboard");
-        container.innerHTML = "";
+fetch(endpoint)
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("scoreboard");
+    container.innerHTML = "";
 
-        const teams = Object.entries(data)
-          .map(([team, points]) => ({ team, points }))
-          .sort((a, b) => b.points - a.points);
+    // Convert JSON to array and sort teams by TeamPoints descending
+    const teams = Object.entries(data)
+      .map(([team, info]) => ({
+        team,
+        teamPoints: info.TeamPoints || 0,
+        players: info.Points || {}
+      }))
+      .sort((a, b) => b.teamPoints - a.teamPoints);
 
-        teams.forEach(t => {
-          const div = document.createElement("div");
-          div.classList.add("team", t.team);
-          div.textContent = `${t.team.charAt(0).toUpperCase() + t.team.slice(1)}: ${t.points}`;
-          container.appendChild(div);
-        });
-      })
-      .catch(err => {
-        document.getElementById("scoreboard").textContent = "Failed to load scoreboard.";
-        console.error(err);
+    teams.forEach(t => {
+      const div = document.createElement("div");
+      div.classList.add("team", t.team);
+
+      // Team header
+      const header = document.createElement("div");
+      header.classList.add("team-header");
+      header.textContent = `${t.team.charAt(0).toUpperCase() + t.team.slice(1)}: ${t.teamPoints}`;
+      div.appendChild(header);
+
+      // Sort players by points descending
+      const sortedPlayers = Object.entries(t.players).sort((a, b) => b[1] - a[1]);
+
+      sortedPlayers.forEach(([player, points]) => {
+        const p = document.createElement("div");
+        p.classList.add("player");
+        p.textContent = `${player}: ${points}`;
+        div.appendChild(p);
       });
-  </script>
+
+      container.appendChild(div);
+    });
+  })
+  .catch(err => {
+    document.getElementById("scoreboard").textContent = "Failed to load scoreboard.";
+    console.error(err);
+  });
+</script>
