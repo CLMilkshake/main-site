@@ -103,7 +103,10 @@ a {
 .team {
   padding: 10px 15px;
   border-radius: 8px;
+  margin: 15%;
+  border-radius:15px;
   margin-bottom: 15px;
+
 }
 
 .team-header {
