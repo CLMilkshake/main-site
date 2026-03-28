@@ -52,19 +52,27 @@
 <h3 style="padding: 5%; text-align:center;"></h3>
 
 <script>
-  // Replace this URL with your FastAPI endpoint
-    const endpoint = "https://api.clmilkshake.cc/lc";
+    const endpoint = "https://api.clmilkshake.cc/lc"; 
 
     fetch(endpoint)
-      .then(response => response.json())
+      .then(res => res.json())
       .then(data => {
-        // Beautify the JSON with 2-space indentation
-        const pretty = JSON.stringify(data, null, 2);
-        document.getElementById("scoreboard").textContent = pretty;
+        const container = document.getElementById("scoreboard");
+        container.innerHTML = "";
+
+        const teams = Object.entries(data)
+          .map(([team, points]) => ({ team, points }))
+          .sort((a, b) => b.points - a.points);
+
+        teams.forEach(t => {
+          const div = document.createElement("div");
+          div.classList.add("team", t.team);
+          div.textContent = `${t.team.charAt(0).toUpperCase() + t.team.slice(1)}: ${t.points}`;
+          container.appendChild(div);
+        });
       })
       .catch(err => {
-        document.getElementById("scoreboard").textContent = "Error fetching scoreboard";
+        document.getElementById("scoreboard").textContent = "Failed to load scoreboard.";
         console.error(err);
       });
-
-</script>
+  </script>
