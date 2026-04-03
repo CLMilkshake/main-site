@@ -43,48 +43,52 @@
 </div>
 
 <script>
-const endpoint = "https://api.clmilkshake.cc/lc"; // Your FastAPI endpoint
+const endpoint = "https://api.clmilkshake.cc/lc";
 
-fetch(endpoint)
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById("scoreboard");
-    container.innerHTML = "";
+function loadScoreboard() {
+  fetch(endpoint)
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById("scoreboard");
+      container.innerHTML = "";
 
-    // Convert JSON to array and sort teams by TeamPoints descending
-    const teams = Object.entries(data)
-      .map(([team, info]) => ({
-        team,
-        teamPoints: info.TeamPoints || 0,
-        players: info.Points || {}
-      }))
-      .sort((a, b) => b.teamPoints - a.teamPoints);
+      const teams = Object.entries(data)
+        .map(([team, info]) => ({
+          team,
+          teamPoints: info.TeamPoints || 0,
+          players: info.Points || {}
+        }))
+        .sort((a, b) => b.teamPoints - a.teamPoints);
 
-    teams.forEach(t => {
-      const div = document.createElement("div");
-      div.classList.add("team", t.team);
+      teams.forEach((t, index) => {
+        const div = document.createElement("div");
+        div.classList.add("team", t.team);
 
-      // Team header
-      const header = document.createElement("div");
-      header.classList.add("team-header");
-      header.textContent = `${t.team.charAt(0).toUpperCase() + t.team.slice(1)}: ${t.teamPoints}`;
-      div.appendChild(header);
+        const header = document.createElement("div");
+        header.classList.add("team-header");
+        header.textContent = `#${index + 1} ${t.team.charAt(0).toUpperCase() + t.team.slice(1)}: ${t.teamPoints}`;
+        div.appendChild(header);
 
-      // Sort players by points descending
-      const sortedPlayers = Object.entries(t.players).sort((a, b) => b[1] - a[1]);
+        const sortedPlayers = Object.entries(t.players)
+          .sort((a, b) => b[1] - a[1]);
 
-      sortedPlayers.forEach(([player, points]) => {
-        const p = document.createElement("div");
-        p.classList.add("player");
-        p.textContent = `${player}: ${points}`;
-        div.appendChild(p);
+        sortedPlayers.forEach(([player, points]) => {
+          const p = document.createElement("div");
+          p.classList.add("player");
+          p.textContent = `${player}: ${points}`;
+          div.appendChild(p);
+        });
+
+        container.appendChild(div);
       });
-
-      container.appendChild(div);
+    })
+    .catch(err => {
+      document.getElementById("scoreboard").textContent = "Failed to load scoreboard.";
+      console.error(err);
     });
-  })
-  .catch(err => {
-    document.getElementById("scoreboard").textContent = "Failed to load scoreboard.";
-    console.error(err);
-  });
+}
+</script>
+<script>
+loadScoreboard();
+setInterval(loadScoreboard, 300000);
 </script>
