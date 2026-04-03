@@ -121,6 +121,23 @@ a {
     margin-bottom: 3px;
   }
 
+  .scoreboard-h {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto; /* allows scrolling if too many teams */
+  padding: 10px;
+}
+
+.team-h {
+  min-width: 180px;
+  background: #1e1e1e;
+  border-radius: 10px;
+  padding: 10px;
+  flex-shrink: 0; /* prevents squishing */
+}
+
+
   /* Team colors */
   .red { background: #ff4c4c; }
   .orange { background: #ff9900; }
