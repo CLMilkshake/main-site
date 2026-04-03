@@ -57,7 +57,7 @@ const endpoint = "https://api.clmilkshake.cc/lc"; // Your FastAPI endpoint
 fetch(endpoint)
   .then(res => res.json())
   .then(data => {
-    const container = document.getElementById("scoreboard");
+    const container = document.getElementById("scoreboard-h");
     container.innerHTML = "";
 
     // Convert JSON to array and sort teams by TeamPoints descending
