@@ -47,7 +47,7 @@
 
 function loadScoreboard() {
   const container = document.getElementById("scoreboard");
-  if (!container) return; // prevent null error
+  if (!container) return; 
 
   fetch(endpoint)
     .then(res => res.json())
@@ -66,7 +66,6 @@ function loadScoreboard() {
         const div = document.createElement("div");
         div.classList.add("team", t.team);
 
-        // ✅ FIXED template string
         const header = document.createElement("div");
         header.classList.add("team-header");
         header.textContent = `#${index + 1} ${t.team.charAt(0).toUpperCase() + t.team.slice(1)}: ${t.teamPoints}`;
@@ -78,7 +77,6 @@ function loadScoreboard() {
         sortedPlayers.forEach(([player, points]) => {
           const p = document.createElement("div");
 
-          // ✅ FIXED template string
           p.classList.add("player");
           p.textContent = `${player}: ${points}`;
           div.appendChild(p);
@@ -91,15 +89,13 @@ function loadScoreboard() {
       if (container) {
         container.textContent = "Failed to load scoreboard.";
       }
-      console.error(err); // ✅ fixed
+      console.error(err); 
     });
 }
 
-// ✅ Wait for page to load before running
 document.addEventListener("DOMContentLoaded", () => {
   loadScoreboard();
 
-  // Optional auto-refresh every 5 minutes
   setInterval(loadScoreboard, 300000);
 });
 </script>
