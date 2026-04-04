@@ -122,11 +122,10 @@ a {
   }
 
   .scoreboard-h {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  overflow-x: auto; /* allows scrolling if too many teams */
-  padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 per row */
+    gap: 20px;
+    padding: 10px;
 }
 
 .team-h {
