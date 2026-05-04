@@ -312,6 +312,9 @@ button {
         margin-top: 0px;
         font-size: 100%;
     }
+    .content h2 {
+        font-size:15px;
+    }
     .main h1 {
         font-size: 150%;
     }
