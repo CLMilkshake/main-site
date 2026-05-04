@@ -1,24 +1,22 @@
-<!-- Save this for later, adds a prompt on screen, kinda cool... var name = prompt("What's your name?"); -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Milkshake Lab Productions</title>
-    <link rel="icon" type="image/png" href="images/logo.png">
-    <link rel="stylesheet" href="index.css">
-
+  <meta charset="UTF-8">
+  <title>Game Show Scores</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <header>
+
         <div class="main">
             <img src="images/logo.png" style="width: 120px;">
             <h1>Milkshake Lab Productions</h1>
         </div>
     </header>
 
-    <nav>
-        <b><a href="#">Home</a></b>
+     <nav>
+        <b><a href="index.html">Home</a></b>
         <b><a href="theboard.html">Info</a></b>
         <b><a href="scores.html">Scores</a></b>
         <b><a href="sponsors.html">Sponsors</a></b>
@@ -28,24 +26,23 @@
     <div class="content">
         <h1>THE BOARD</h1>
         <hr>
-        <div class="grid-container" style="grid-template-columns: repeat(auto-fill, minmax(70vw, 50%));">
-            <div class="grid-item" style="padding-bottom: 5%;">
-                <h2 style="font-size:300%;"><b>Trailer</b></h2>
-                <h3>Trailer coming soon!</h3></div>
-            </div>
-            <div class="grid-item">
-                <a href="theboard.html">
-                    <h2><b>The Board</b></h2>
-                    <h4 style="color: rgb(109, 245, 255);">
-                        The most scuffed game show you'll ever see, but also the most fun. Click for more info
-                    </h4>
-                    <img src="images/TheBoardLogo1.png" alt="Berry Station">
-                </a>
-            </div>
+        <h1>Scores</h1>
+        <div class="leaderboard" id="leaderboard">
+            <h2>Leaderboard</h2>
+            <ol id="leaderList">
+
+            </ol>
+            <button onclick="loadScores()">🔄 Refresh Scores</button>
+            <!-- <table id="scoreTable" style="color: rgb(255, 255, 255); table-layout: auto; border-collapse: collapse;">
+                <thead>
+                <tr id="headerRow"></tr>
+                </thead>
+                <tbody id="scoreBody"></tbody>
+            </table> -->
         </div>
     </div>
 
-    <footer>
+   <footer>
         <div class="controls">
             <label for="themeSelect">Background:</label>
             <select id="themeSelect"></select>
@@ -57,6 +54,7 @@
         </div>
     </footer>
 
+    <!--Random Background Script-->
 <script>
     const themes = [
     { name: "Default", 
@@ -147,5 +145,64 @@
     });
 </script>
 
+    <!--Score Update Script-->
+  <script>
+    const sheetId = '1OY8XyzotA8afgMUSCN4__L6W4U70sISUms_PUk40ybQ';
+    const sheetName = 'Sheet1';
+    const url = `https://opensheet.elk.sh/${sheetId}/${sheetName}`;
+
+    function loadScores() {
+      /*
+      const headerRow = document.getElementById('headerRow');
+      const scoreBody = document.getElementById('scoreBody');
+      */
+      const leaderList = document.getElementById('leaderList');
+
+      /*
+      headerRow.innerHTML = '';
+      scoreBody.innerHTML = '';
+      */
+      leaderList.innerHTML = '';
+
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          /*
+          const headers = Object.keys(data[0]);
+          headers.push('Total');
+
+          headers.forEach(header => {
+            const th = document.createElement('th');
+            th.textContent = header;
+            headerRow.appendChild(th);
+          });
+          */
+
+          const scores = [];
+
+          data.forEach(row => {
+            let total = 0;
+            Object.keys(row).forEach(key => {
+              if (key !== Object.keys(row)[0]) { 
+                const num = parseInt(row[key]);
+                if (!isNaN(num)) total += num;
+              }
+            });
+
+            const nameKey = Object.keys(row)[0];
+            scores.push({ name: row[nameKey], total: total });
+          });
+
+          scores.sort((a, b) => b.total - a.total);
+          scores.forEach(player => {
+            const li = document.createElement('li');
+            li.textContent = `${player.name} - ${player.total} pts`;
+            leaderList.appendChild(li);
+          });
+        });
+    }
+
+    window.onload = loadScores;
+  </script>
 </body>
 </html>

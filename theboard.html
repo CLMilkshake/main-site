@@ -7,42 +7,33 @@
     <title>Milkshake Lab Productions</title>
     <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="stylesheet" href="index.css">
-
 </head>
 <body>
     <header>
+
         <div class="main">
             <img src="images/logo.png" style="width: 120px;">
             <h1>Milkshake Lab Productions</h1>
         </div>
     </header>
 
-    <nav>
-        <b><a href="#">Home</a></b>
+     <nav>
+        <b><a href="index.html">Home</a></b>
         <b><a href="theboard.html">Info</a></b>
         <b><a href="scores.html">Scores</a></b>
         <b><a href="sponsors.html">Sponsors</a></b>
         <b><a href="" target="_blank"><span class="address">Location</span></a> </b>
     </nav>
 
-    <div class="content">
+    <div class="content" style="color: white; text-shadow:0 0 10px #000000; background-color:rgba(0, 0, 0, 0.3);border-radius:60px;">
         <h1>THE BOARD</h1>
         <hr>
-        <div class="grid-container" style="grid-template-columns: repeat(auto-fill, minmax(70vw, 50%));">
-            <div class="grid-item" style="padding-bottom: 5%;">
-                <h2 style="font-size:300%;"><b>Trailer</b></h2>
-                <h3>Trailer coming soon!</h3></div>
-            </div>
-            <div class="grid-item">
-                <a href="theboard.html">
-                    <h2><b>The Board</b></h2>
-                    <h4 style="color: rgb(109, 245, 255);">
-                        The most scuffed game show you'll ever see, but also the most fun. Click for more info
-                    </h4>
-                    <img src="images/TheBoardLogo1.png" alt="Berry Station">
-                </a>
-            </div>
-        </div>
+        <h2 style="padding-left: 5%; padding-right: 5%; text-align:center;">Welcome back to The Board! Our improv-ish game show is coming back this year! Come see 4 contestants answer trivia, participate in physical challenges, and improv on stage for your votes! You also might get the chance to help them out! Here pretty soon there will be a date & location announced, so keep your eyes peeled!</h2>
+        <h2 style="padding-left: 5%; padding-right: 5%; text-align:center;">It's on [date] <a href="" style="color: aqua; text-decoration:underline;"> Location will be here.</a></h2>
+        <!--<h2>Sponsored by <a href="https://getberrystation.com" style="color:white;text-decoration: underline;"> Berry Station</a> and Parke Express</h2>-->
+      <!--  <h2>RSVP Button will be here, but I don't want to take RSVPs until the stage is ready </h2>-->
+        <h2 style="font-size:300%;"><a href="https://forms.gle/y9espF8mEc1MF2XWA" style="background-color: rgb(0,0,0,0.3); color: white; padding: 10px; border-radius: 10px;">RSVP Here</a></h2> 
+        <!--<iframe width="600" height="325" src="https://www.youtube.com/embed/-8BaqERgTRk" title="The Board Cowboy Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="border-radius:30px;"></iframe>-->
     </div>
 
     <footer>
@@ -64,16 +55,16 @@
         color1: "white", 
         color2: "rgba(255, 251, 0, 0.3)", 
         color3:"2px solid rgba(255, 238, 0, 1)", 
-        textcolor:"white",
-        headerBackground:"rgba(0, 0, 0, 0)"
+        textColor:"white",
+        headerBackground:"rgba(0, 0, 0, 0.3)"
     },
     { name: "Fancy", 
         background: "images/TheBoardBackgroundFancy.png", 
         color1: "white", 
         color2: "black", 
         color3:"2px solid gray", 
-        textColor:"gray",
-        headerBackground:"rgba(0, 0, 0, 0.3)" 
+        textColor:"white",
+        headerBackground:"rgba(0, 0, 0, 0.5)" 
     }
     ];
 
@@ -96,7 +87,7 @@
         nav.style.backgroundColor = theme.color2;
         nav.style.borderTop = theme.color3;
         nav.style.borderBottom = theme.color3;
-        header.style.backgroundColor = theme.headerBackground;
+        content.style.backgroundColor = theme.headerBackground;
 
         nav.querySelectorAll("a").forEach(link => {
             link.style.color = theme.color1;
@@ -146,6 +137,7 @@
         }
     });
 </script>
+    
 
 </body>
 </html>

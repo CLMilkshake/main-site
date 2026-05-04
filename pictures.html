@@ -7,18 +7,18 @@
     <title>Milkshake Lab Productions</title>
     <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="stylesheet" href="index.css">
-
 </head>
 <body>
     <header>
+
         <div class="main">
             <img src="images/logo.png" style="width: 120px;">
             <h1>Milkshake Lab Productions</h1>
         </div>
     </header>
 
-    <nav>
-        <b><a href="#">Home</a></b>
+     <nav>
+        <b><a href="index.html">Home</a></b>
         <b><a href="theboard.html">Info</a></b>
         <b><a href="scores.html">Scores</a></b>
         <b><a href="sponsors.html">Sponsors</a></b>
@@ -26,20 +26,43 @@
     </nav>
 
     <div class="content">
-        <h1>THE BOARD</h1>
+        <h1>Pick your favorite and share it!</h1>
         <hr>
-        <div class="grid-container" style="grid-template-columns: repeat(auto-fill, minmax(70vw, 50%));">
-            <div class="grid-item" style="padding-bottom: 5%;">
-                <h2 style="font-size:300%;"><b>Trailer</b></h2>
-                <h3>Trailer coming soon!</h3></div>
-            </div>
+        <div class="grid-container" style="grid-template-columns: repeat(auto-fill, minmax(200px, 30%));">
             <div class="grid-item">
-                <a href="theboard.html">
-                    <h2><b>The Board</b></h2>
-                    <h4 style="color: rgb(109, 245, 255);">
-                        The most scuffed game show you'll ever see, but also the most fun. Click for more info
-                    </h4>
-                    <img src="images/TheBoardLogo1.png" alt="Berry Station">
+                <a>
+                    <h2 style="font-size: 50px;"><b>Original Promo</b></h2>
+                    <img src="images/promos/TheBoardPromo1.png" alt="Promo1" style="width: 50%;">
+                </a>
+            </div>
+            <div class="grid-item" >
+                <a>
+                    <h2 style="font-size: 50px;"><b>Summer Colors Promo</b></h2>
+                    <img src="images/promos/TheBoardSummerPromo.png" alt="Summer Colors Promo" style="width: 50%;">
+                </a>
+            </div>
+            <div class="grid-item" >
+                <a>
+                    <h2 style="font-size: 50px;"><b>Fancy Promo</b></h2>
+                    <img src="images/promos/TheBoardFancyPromo.png" alt="Fancy Promo" style="width: 50%;">
+                </a>
+            </div>
+            <div class="grid-item" >
+                <a>
+                    <h2 style="font-size: 50px;"><b>Black and White Image</b></h2>
+                    <img src="images/promos/TheBoardBlackAndWhite.jpg" alt="Black and White Stage" style="width: 50%;">
+                </a>
+            </div>
+            <div class="grid-item" >
+                <a>
+                    <h2 style="font-size: 50px;"><b>Saturated Image</b></h2>
+                    <img src="images/promos/TheBoardSaturated.jpg" alt="Saturated" style="width: 50%;">
+                </a>
+            </div>
+            <div class="grid-item" >
+                <a>
+                    <h2 style="font-size: 50px;"><b>Basic Pop Image</b></h2>
+                    <img src="images/promos/TheBoardPop.jpg" alt="Pop" style="width: 50%;">
                 </a>
             </div>
         </div>
@@ -101,9 +124,12 @@
         nav.querySelectorAll("a").forEach(link => {
             link.style.color = theme.color1;
         });
-        content.querySelectorAll("h2").forEach(link => {
-            link.style.color = theme.textColor;
-        });
+        if (content) {
+            content.querySelectorAll("h2").forEach(h2 => {
+                h2.style.color = theme.textColor;
+            });
+        }
+
 
         if (!randomToggle.checked) {
             localStorage.setItem("chosenTheme", index);
@@ -146,6 +172,7 @@
         }
     });
 </script>
+    
 
 </body>
 </html>
