@@ -18,11 +18,11 @@
     </header>
 
      <nav>
-        <b><a href="index.html">Home</a></b>
-        <b><a href="theboard.html">Info</a></b>
-        <b><a href="scores.html">Scores</a></b>
-        <b><a href="sponsors.html">Sponsors</a></b>
-        <b><a href="" target="_blank"><span class="address">Location</span></a> </b>
+        <b><a href="/">Home</a></b>
+        <b><a href="/theboard">Info</a></b>
+        <b><a href="/scores">Scores</a></b>
+        <!--<b><a href="sponsors.html">Sponsors</a></b>-->
+        <b><a href="/location" target="_blank"><span class="address">Location</span></a> </b>
     </nav>
 
     <div class="content">
@@ -49,7 +49,7 @@
         <h2>The Board</h2>
     </div>
 
-    <footer>
+    <!-- <footer>
         <div class="controls">
             <label for="themeSelect">Background:</label>
             <select id="themeSelect"></select>
@@ -68,16 +68,16 @@
         color1: "white", 
         color2: "rgba(255, 251, 0, 0.3)", 
         color3:"2px solid rgba(255, 238, 0, 1)", 
-        textcolor:"white",
-        headerBackground:"rgba(0, 0, 0, 0)"
+        textColor:"white",
+        headerBackground:"rgba(0, 0, 0, 0.3)"
     },
     { name: "Fancy", 
         background: "images/TheBoardBackgroundFancy.png", 
         color1: "white", 
         color2: "black", 
         color3:"2px solid gray", 
-        textColor:"gray",
-        headerBackground:"rgba(0, 0, 0, 0.3)" 
+        textColor:"white",
+        headerBackground:"rgba(0, 0, 0, 0.5)" 
     }
     ];
 
@@ -100,7 +100,7 @@
         nav.style.backgroundColor = theme.color2;
         nav.style.borderTop = theme.color3;
         nav.style.borderBottom = theme.color3;
-        header.style.backgroundColor = theme.headerBackground;
+        content.style.backgroundColor = theme.headerBackground;
 
         nav.querySelectorAll("a").forEach(link => {
             link.style.color = theme.color1;
@@ -149,7 +149,7 @@
             localStorage.setItem("chosenTheme", idx);
         }
     });
-</script>
+</script> -->
     
 
 </body>

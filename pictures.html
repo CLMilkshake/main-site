@@ -18,33 +18,21 @@
     </header>
 
      <nav>
-        <b><a href="index.html">Home</a></b>
-        <b><a href="theboard.html">Info</a></b>
-        <b><a href="scores.html">Scores</a></b>
+        <b><a href="/">Home</a></b>
+        <b><a href="/theboard">Info</a></b>
+        <b><a href="/scores">Scores</a></b>
         <!--<b><a href="sponsors.html">Sponsors</a></b>-->
-        <b><a href="" target="_blank"><span class="address">Location</span></a> </b>
+        <b><a href="/location" target="_blank"><span class="address">Location</span></a> </b>
     </nav>
 
     <div class="content">
         <h1>Pick your favorite and share it!</h1>
         <hr>
         <div class="grid-container" style="grid-template-columns: repeat(auto-fill, minmax(200px, 30%));">
-            <div class="grid-item">
-                <a>
-                    <h2 style="font-size: 50px;"><b>Original Promo</b></h2>
-                    <img src="images/promos/TheBoardPromo1.png" alt="Promo1" style="width: 50%;">
-                </a>
-            </div>
             <div class="grid-item" >
                 <a>
-                    <h2 style="font-size: 50px;"><b>Summer Colors Promo</b></h2>
-                    <img src="images/promos/TheBoardSummerPromo.png" alt="Summer Colors Promo" style="width: 50%;">
-                </a>
-            </div>
-            <div class="grid-item" >
-                <a>
-                    <h2 style="font-size: 50px;"><b>Fancy Promo</b></h2>
-                    <img src="images/promos/TheBoardFancyPromo.png" alt="Fancy Promo" style="width: 50%;">
+                    <h2 style="font-size: 50px;"><b>Flyer 1</b></h2>
+                    <img src="images/promos/TheBoardBasicAd2026.png" alt="Pop" style="width: 50%;">
                 </a>
             </div>
             <div class="grid-item" >
@@ -68,7 +56,7 @@
         </div>
     </div>
 
-    <footer>
+    <!-- <footer>
         <div class="controls">
             <label for="themeSelect">Background:</label>
             <select id="themeSelect"></select>
@@ -87,16 +75,16 @@
         color1: "white", 
         color2: "rgba(255, 251, 0, 0.3)", 
         color3:"2px solid rgba(255, 238, 0, 1)", 
-        textcolor:"white",
-        headerBackground:"rgba(0, 0, 0, 0)"
+        textColor:"white",
+        headerBackground:"rgba(0, 0, 0, 0.3)"
     },
     { name: "Fancy", 
         background: "images/TheBoardBackgroundFancy.png", 
         color1: "white", 
         color2: "black", 
         color3:"2px solid gray", 
-        textColor:"gray",
-        headerBackground:"rgba(0, 0, 0, 0.3)" 
+        textColor:"white",
+        headerBackground:"rgba(0, 0, 0, 0.5)" 
     }
     ];
 
@@ -119,17 +107,14 @@
         nav.style.backgroundColor = theme.color2;
         nav.style.borderTop = theme.color3;
         nav.style.borderBottom = theme.color3;
-        header.style.backgroundColor = theme.headerBackground;
+        content.style.backgroundColor = theme.headerBackground;
 
         nav.querySelectorAll("a").forEach(link => {
             link.style.color = theme.color1;
         });
-        if (content) {
-            content.querySelectorAll("h2").forEach(h2 => {
-                h2.style.color = theme.textColor;
-            });
-        }
-
+        content.querySelectorAll("h2").forEach(link => {
+            link.style.color = theme.textColor;
+        });
 
         if (!randomToggle.checked) {
             localStorage.setItem("chosenTheme", index);
@@ -171,7 +156,7 @@
             localStorage.setItem("chosenTheme", idx);
         }
     });
-</script>
+</script> -->
     
 
 </body>
