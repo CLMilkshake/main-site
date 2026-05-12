@@ -72,9 +72,9 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(38, 0, 255, 0.3);
-    border-top: 2px solid rgb(38, 0, 255);
-    border-bottom: 2px solid rgb(38, 0, 255);
+    background-color: rgba(0, 195, 255, 0.3);
+    border-top: 2px solid rgb(0, 153, 255);
+    border-bottom: 2px solid rgb(0, 153, 255);
     max-height: 200px;
 }
 
